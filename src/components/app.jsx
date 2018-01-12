@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addReminder, deleteReminder} from '../actions';
+import {addReminder, deleteReminder, clearReminders} from '../actions';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -11,7 +11,7 @@ class App extends Component{
     super(props);
     this.state = {
       text: '',
-      dueDate: moment()
+      dueDate: ''
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -24,6 +24,7 @@ class App extends Component{
   addReminder() {
     console.log('this.state.dueDate', this.state.dueDate);
     this.props.addReminder(this.state.text, this.state.dueDate);
+    console.log(this.state.dueDate._d);
   }
   deleteReminder(id){
     console.log('deleting in app', id);
@@ -38,9 +39,12 @@ class App extends Component{
           reminders.map(reminder => {
             return (
               <li key={reminder.id} className="list-group-item reminderI">
-                <div className="list-item">{reminder.text}</div>
+                <div className="list-item">
+                  <div>{reminder.text}</div>
+                  <div className="reminderTime">{moment(new Date(reminder.dueDate)).fromNow()}</div>
+                </div>
                 <div
-                  className="list-item delete-button"
+                  className="list-item delete-button hvr-pop"
                   onClick={() => this.deleteReminder(reminder.id)}
                   >&#x2715;</div>
               </li>
@@ -53,17 +57,23 @@ class App extends Component{
   render() {
     return(
       <div className="App">
+        <div
+            className="clearReminders btn btn-danger hvr-buzz"
+            onClick={()=> this.props.clearReminders()}
+          >Clear All
+        </div>
         <div className="title">Reminder Pro</div>
         <div className="form-inline formR">
           <div className="formG">
             <input
               className="form-control inputR formItem"
               placeholder="I have to..."
-              onChange = {event => this.setState({text: event.target.value})}
+              onChange={event => this.setState({text: event.target.value})}
             />
           <DatePicker
             className="form-control inputR formItem"
             dateFormat =  "LLL"
+            placeholderText="Due Date"
             selected={this.state.dueDate}
             onChange={this.handleChange}
             />
@@ -90,4 +100,4 @@ function mapStateToProps(state) {
 //   return bindActionCreators({addReminder}, dispatch);
 // }
 
-export default connect(mapStateToProps, {addReminder, deleteReminder})(App);
+export default connect(mapStateToProps, {addReminder, deleteReminder, clearReminders})(App);

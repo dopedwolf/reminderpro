@@ -22,7 +22,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 .formItem {
   padding: 10px;
@@ -37,6 +37,18 @@ button {
   width: 80%;
   margin-bottom: 30px;
 }
+.reminderTime {
+  font-style: italic;
+  color: rgb(232, 74, 116);
+  font-size: 13px;
+  margin-top: 8px;
+}
+.clearReminders {
+  align-self: flex-end;
+  font-weight: bold;
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
 .reminderI {
   margin-bottom: 10px;
 }
@@ -47,4 +59,74 @@ button {
   float: right;
   padding-left: 5px;
   cursor: pointer;
+}
+
+/*Hover*/
+/* Buzz */
+@-webkit-keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(1px) rotate(1deg);
+    transform: translateX(1px) rotate(1deg);
+  }
+  100% {
+    -webkit-transform: translateX(-1px) rotate(-1deg);
+    transform: translateX(-1px) rotate(-1deg);
+  }
+}
+@keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(1px) rotate(1deg);
+    transform: translateX(1px) rotate(1deg);
+  }
+  100% {
+    -webkit-transform: translateX(-1px) rotate(-1deg);
+    transform: translateX(-1px) rotate(-1deg);
+  }
+}
+.hvr-buzz {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(.5px) translateZ(0);
+  transform: perspective(.5px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-buzz:hover, .hvr-buzz:focus, .hvr-buzz:active {
+  -webkit-animation-name: hvr-buzz;
+  animation-name: hvr-buzz;
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+/* Pop */
+@-webkit-keyframes hvr-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+@keyframes hvr-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+.hvr-pop {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.hvr-pop:hover, .hvr-pop:focus, .hvr-pop:active {
+  -webkit-animation-name: hvr-pop;
+  animation-name: hvr-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
