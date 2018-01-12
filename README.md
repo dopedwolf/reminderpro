@@ -7,5 +7,5 @@ Main packages:
 -Redux
 -SFCookies
 
-##Demo
+## Demo
 https://react-reminderpro.herokuapp.com/
