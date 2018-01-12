@@ -8,5 +8,5 @@ ReactJS and Redux Application.
 - SFCookies
 - reactDatePicker
 
-## Demo
+### Demo
 https://react-reminderpro.herokuapp.com/
